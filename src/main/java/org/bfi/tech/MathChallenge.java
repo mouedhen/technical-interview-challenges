@@ -48,7 +48,18 @@ public class MathChallenge {
     }
 
     public static int calculateChecksum(String input) {
-        return 0;
+        int crc = 0;
+        for (int i = 0; i < input.length(); i++) {
+            final char currentChar = input.charAt(i);
+            if (Character.isDigit(currentChar)) {
+                final int position = i + 1;
+                final int value = (currentChar - '0') * position;
+                crc += value;
+            } else {
+                throw new IllegalArgumentException("illegal char " + currentChar);
+            }
+        }
+        return crc % 10;
     }
 
     public static int fromRomanToDecimal(String romanNumber) {
