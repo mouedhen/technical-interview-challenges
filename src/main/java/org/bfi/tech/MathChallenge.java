@@ -28,8 +28,23 @@ public class MathChallenge {
         return results;
     }
 
+    static boolean isPrimeNumber(final int number) {
+        for (int i = 2; i <= number / 2; i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static List<Integer> retrievePrimeNumbers(int maxValue) {
-        return new ArrayList<>();
+        final List<Integer> results = new ArrayList<>();
+        for (int i = 2; i <= maxValue; i++) {
+            if (isPrimeNumber(i)) {
+                results.add(i);
+            }
+        }
+        return results;
     }
 
     public static int calculateChecksum(String input) {
