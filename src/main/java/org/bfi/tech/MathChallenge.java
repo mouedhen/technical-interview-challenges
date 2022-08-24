@@ -8,8 +8,24 @@ public class MathChallenge {
         super();
     }
 
+    static boolean isPerfectNumber(final int number) {
+        int multipliersSum = 1;
+        for (int i = 2; i <= number / 2; i++) {
+            if (number % i == 0) {
+                multipliersSum += i;
+            }
+        }
+        return number == multipliersSum;
+    }
+
     public static List<Integer> retrievePerfectNumbers(final int maxExclusive) {
-        return new ArrayList<>();
+        final List<Integer> results = new ArrayList<>();
+        for (int i = 2; i < maxExclusive; i++) {
+            if (isPerfectNumber(i)) {
+                results.add(i);
+            }
+        }
+        return results;
     }
 
     public static List<Integer> retrievePrimeNumbers(int maxValue) {
