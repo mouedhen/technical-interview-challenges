@@ -8,8 +8,18 @@ public class RecursionChallenge {
         super();
     }
 
-    public static String toBinary(int input) {
-        return null;
+    public static String toBinary(final int input) {
+        if (input < 0) {
+            throw new IllegalArgumentException("n must be >= 0");
+        }
+
+        if (input <= 1) {
+            return String.valueOf(input);
+        }
+
+        final int lastDigit = input % 2;
+        final int remainder = input / 2;
+        return toBinary(remainder) + lastDigit;
     }
 
     public static String toOctal(int input) {
