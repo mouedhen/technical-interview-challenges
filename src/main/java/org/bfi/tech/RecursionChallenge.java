@@ -65,15 +65,7 @@ public class RecursionChallenge {
     }
 
     public static boolean isPowerOfTwo(final int toCheck) {
-        if (toCheck < 2) {
-            return toCheck == 1;
-        }
-
-        if (toCheck % 2 != 0) {
-            return false;
-        }
-
-        return isPowerOfTwo(toCheck / 2);
+        return toCheck == 1 || toCheck > 0 && toCheck % 2 == 0 && isPowerOfTwo(toCheck / 2);
     }
 
     public static long powerOf(int number, int power) {
