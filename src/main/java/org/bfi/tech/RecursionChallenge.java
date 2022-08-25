@@ -91,11 +91,35 @@ public class RecursionChallenge {
         return isNumberPalindromeRec(toCheck, 0, toCheck);
     }
 
+    static Set<String> retrievePermutations(final String remaining, final String prefix) {
+        if (remaining.length() == 0) return Set.of(prefix);
+        final Set<String> candidates = new HashSet<>();
+        for (int i = 0; i < remaining.length(); i++) {
+            final String newPrefix = prefix + remaining.charAt(i);
+            final String newRemaining = remaining.substring(0, i) + remaining.substring(i + 1);
+            candidates.addAll(retrievePermutations(newRemaining, newPrefix));
+        }
+        return candidates;
+    }
+
     public static Set<String> retrievePermutations(String input) {
-        return new HashSet<>();
+        return retrievePermutations(input, "");
+    }
+
+    static int countSubstring(final String input, final String valueToFind, int left) {
+        if (input.length() - left < valueToFind.length()) return 0;
+
+        int count = 0;
+        if (input.startsWith(valueToFind, left)) {
+            left += valueToFind.length();
+            count = 1;
+        } else {
+            left++;
+        }
+        return countSubstring(input, valueToFind, left) + count;
     }
 
     public static int countSubstring(String input, String term) {
-        return 0;
+        return countSubstring(input, term, 0);
     }
 }
