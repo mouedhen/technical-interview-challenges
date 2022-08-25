@@ -64,8 +64,16 @@ public class RecursionChallenge {
         return toHex(remainder) + asHexDigit(lastDigit);
     }
 
-    public static boolean isPowerOfTwo(int toCheck) {
-        return false;
+    public static boolean isPowerOfTwo(final int toCheck) {
+        if (toCheck < 2) {
+            return toCheck == 1;
+        }
+
+        if (toCheck % 2 != 0) {
+            return false;
+        }
+
+        return isPowerOfTwo(toCheck / 2);
     }
 
     public static long powerOf(int number, int power) {
