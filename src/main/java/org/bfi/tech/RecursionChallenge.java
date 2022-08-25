@@ -68,8 +68,25 @@ public class RecursionChallenge {
         return toCheck == 1 || toCheck > 0 && toCheck % 2 == 0 && isPowerOfTwo(toCheck / 2);
     }
 
-    public static long powerOf(int number, int power) {
-        return 0L;
+    public static long powerOf(final int number, final int power) {
+        if (power < 0) {
+            throw new IllegalArgumentException("Exponent must be >= 0");
+        }
+
+        if (power == 0) {
+            return 1;
+        }
+
+        if (power == 1) {
+            return number;
+        }
+
+        final long result = powerOf(number * number, power / 2);
+        if (power % 2 == 1) {
+            return number * result;
+        }
+
+        return result;
     }
 
     public static long iterativePowerOf(int number, int power) {
