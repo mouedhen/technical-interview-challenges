@@ -11,7 +11,8 @@ public class PatternCheckerTest {
             "xyyx, tim mike mike tim, true",
             "xyyx, time mike tom tim, false",
             "xyxx, tim mike mike tim, false",
-            "xxxx, tim tim tim tim, true"
+            "xxxx, tim tim tim tim, true",
+            "xyzx, red black black red, false"
     })
     void testInputMatchesPattern(String pattern, String input, boolean expected) {
         boolean result = StringChallenge.matchesPattern(pattern, input);
