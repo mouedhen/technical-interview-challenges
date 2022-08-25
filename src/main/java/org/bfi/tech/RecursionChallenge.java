@@ -90,7 +90,12 @@ public class RecursionChallenge {
     }
 
     public static long iterativePowerOf(int number, int power) {
-        return 0L;
+        long result = 1;
+        while (power > 0) {
+            result *= number;
+            power--;
+        }
+        return result;
     }
 
     public static boolean isNumberPalindrome(int toCheck) {
